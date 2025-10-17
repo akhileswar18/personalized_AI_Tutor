@@ -1,0 +1,6 @@
+{
+  "name": "Personalized AI Tutor with Knowledge Graph",
+  "description": "An intelligent learning companion that organizes a course into a web of interconnected concepts, guiding students along personalized paths. Features include initial assessment, dynamic roadmap, concept exploration with quizzes, progress tracking, adaptive recommendations, and a conversational interface.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

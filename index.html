@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personalized AI Tutor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {"50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a","950":"#172554"},
+            secondary: {"50":"#f0f9ff","100":"#e0f2fe","200":"#bae6fd","300":"#7dd3fc","400":"#38bdf8","500":"#0ea5e9","600":"#0284c7","700":"#0369a1","800":"#075985","900":"#0c4a6e","950":"#082f49"},
+          },
+           typography: ({ theme }) => ({
+            DEFAULT: {
+              css: {
+                color: theme('colors.slate.300'),
+                a: {
+                  color: theme('colors.primary.400'),
+                  '&:hover': {
+                    color: theme('colors.primary.500'),
+                  },
+                },
+                strong: { color: theme('colors.slate.100') },
+                h1: { color: theme('colors.slate.100') },
+                h2: { color: theme('colors.slate.200') },
+                h3: { color: theme('colors.slate.200') },
+                h4: { color: theme('colors.slate.300') },
+                code: { color: theme('colors.pink.400'), backgroundColor: theme('colors.slate.800'), padding: '0.2em 0.4em', borderRadius: '0.25rem' },
+                pre: { backgroundColor: theme('colors.slate.800') },
+                 blockquote: {
+                  color: theme('colors.slate.400'),
+                  borderLeftColor: theme('colors.slate.700'),
+                },
+              },
+            },
+            invert: { // Ensure prose-invert styles are well-defined if used
+              css: {
+                 color: theme('colors.slate.300'),
+                a: {
+                  color: theme('colors.primary.400'),
+                  '&:hover': {
+                    color: theme('colors.primary.300'),
+                  },
+                },
+                strong: { color: theme('colors.slate.100') },
+                h1: { color: theme('colors.slate.50') },
+                h2: { color: theme('colors.slate.100') },
+                h3: { color: theme('colors.slate.200') },
+                h4: { color: theme('colors.slate.300') },
+                code: { color: theme('colors.pink.400'), backgroundColor: theme('colors.slate.700') },
+                pre: { backgroundColor: theme('colors.slate.800') },
+                 blockquote: {
+                  color: theme('colors.slate.400'),
+                  borderLeftColor: theme('colors.slate.600'),
+                },
+              },
+            },
+          }),
+        }
+      },
+      // Removed plugins that use require()
+      // plugins: [
+      //   require('@tailwindcss/typography'),
+      //   require('@tailwindcss/forms'),
+      // ],
+    }
+  </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.4.0",
+    "recharts": "https://esm.sh/recharts@^2.15.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/"
+  }
+}
+</script>
+<style>
+  /* Custom scrollbar for WebKit browsers */
+  ::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+    height: 8px; /* Height of the scrollbar for horizontal scroll */
+  }
+  ::-webkit-scrollbar-track {
+    background: #1e293b; /* slate-800, track color */
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #475569; /* slate-600, thumb color */
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #64748b; /* slate-500, thumb hover color */
+  }
+
+  /* Custom scrollbar for Firefox */
+  html {
+    scrollbar-width: thin; /* "auto" or "thin" */
+    scrollbar-color: #475569 #1e293b; /* thumb and track color */
+  }
+
+  /* Ensure prose styles apply globally for dynamically generated content if needed */
+  .prose {
+    /* Base prose styles from Tailwind applied here if required outside explicit prose classes */
+  }
+</style>
+  <!-- 1. Load Babel Standalone -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <!-- MathJax Configuration -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-slate-900 text-slate-100">
+  <div id="root"></div>
+  <!-- 2. Change script type to "text/babel", add data-presets, and configure preset-env -->
+  <script 
+    type="text/babel" 
+    data-presets="env,react,typescript" 
+    data-presets-env-options='{ "modules": false }'
+    src="/index.tsx"
+  ></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
