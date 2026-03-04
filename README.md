@@ -30,9 +30,11 @@ A comprehensive educational platform that combines AI-powered tutoring with inte
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+ 
+- Node.js 18+
+- Python 3.10+
 - npm or yarn
-- Groq API key (for AI tutoring)
+- pip
+- Groq API key (optional, for AI tutoring)
 - Gemini API key (optional, for enhanced features)
 
 ### Installation
@@ -48,7 +50,12 @@ A comprehensive educational platform that combines AI-powered tutoring with inte
    npm install
    ```
 
-3. **Set up environment variables**
+3. **Install Python backend dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set up environment variables**
    Create a `.env` file in the root directory:
    ```env
    GROQ_API_KEY=your_groq_api_key_here
@@ -57,7 +64,7 @@ A comprehensive educational platform that combines AI-powered tutoring with inte
    VITE_API_BASE=http://localhost:8787
    ```
 
-4. **Start the development servers**
+5. **Start the development servers**
    
    **Backend (Terminal 1):**
    ```bash
@@ -69,7 +76,7 @@ A comprehensive educational platform that combines AI-powered tutoring with inte
    npm run dev
    ```
 
-5. **Access the application**
+6. **Access the application**
    - Frontend: http://localhost:5173
    - Backend API: http://localhost:8787
 
@@ -81,7 +88,7 @@ A comprehensive educational platform that combines AI-powered tutoring with inte
 - **State Management**: React hooks for local state management
 - **Styling**: Tailwind CSS for responsive design
 
-### Backend (Express + TypeScript)
+### Backend (FastAPI + Python)
 - **API Endpoints**: RESTful API for all functionality
 - **AI Integration**: Groq API for LLM capabilities
 - **Video Generation**: Multi-stage video creation pipeline
@@ -94,10 +101,9 @@ A comprehensive educational platform that combines AI-powered tutoring with inte
 │   ├── VideoGenerator.tsx # Video generation UI
 │   ├── ConceptView.tsx  # Main concept display
 │   └── ...
-├── server/             # Backend Express server
-│   ├── services/       # Business logic services
-│   ├── providers/      # External API providers
-│   └── utils/          # Utility functions
+├── backend/            # FastAPI backend server
+│   ├── app.py          # API routes and server setup
+│   └── content.py      # Topic-aware educational content generation
 ├── services/           # Frontend API services
 └── types.ts           # TypeScript type definitions
 ```
@@ -164,8 +170,8 @@ npm run server:start # Start production backend server
 3. Test video generation for new concepts
 
 ### Customizing Video Content
-1. Modify narrative prompts in `server/prompts/narrativePrompts.ts`
-2. Adjust video generation logic in `server/services/videoGenerator.ts`
+1. Modify narrative content generation in `backend/content.py`
+2. Adjust API behavior in `backend/app.py`
 3. Update frontend video components as needed
 
 ## 🔒 Environment Variables
@@ -221,4 +227,4 @@ For support, email your-email@example.com or create an issue in the GitHub repos
 
 ---
 
-**Built with ❤️ for personalized education**# personalized_AI_Tutor
+**Built with ❤️ for personalized education**

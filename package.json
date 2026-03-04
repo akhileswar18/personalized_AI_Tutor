@@ -29,9 +29,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "server:dev": "tsx watch server/index.ts",
-    "server:start": "node dist-server/index.js",
-    "server:build": "tsc -p server/tsconfig.server.json",
+    "server:dev": "python -m uvicorn backend.app:app --host 0.0.0.0 --port 8787 --reload",
+    "server:start": "python -m uvicorn backend.app:app --host 0.0.0.0 --port 8787",
+    "server:build": "echo \"Python backend does not require build step\"",
     "setup": "node setup.js",
     "start": "npm run server:dev & npm run dev"
   },
